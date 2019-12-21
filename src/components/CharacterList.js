@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
+import CharacterCard from "./CharacterCard";
 
-export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
 
-  useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+export default function CharacterList(props) {
 
   return (
-    <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
-    </section>
+    <div className="character-list">
+      <ul>
+        {(props.searchResults) ? props.searchResults.map(character => (
+          <CharacterCard key={character.id} name={character.name} species={character.species} status={character.status}   />
+        )) : null}
+      </ul>
+        <h2>
+            {characters.map((character) => {
+                return (
+                    <CharacterCard key={character.id} name={character.name} species={character.species} status={character.status}   />
+                )
+            })}
+        </h2>
+    </div>
   );
 }
