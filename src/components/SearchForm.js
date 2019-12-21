@@ -48,7 +48,7 @@ export default function SearchForm() {
           onChange={handleChanges}
         />
       </form>
-      <CharacterList searchResults={searchResults}/>
+      <CharacterList searchResults={searchResults} characters={characters}/>
     </section>
   );
 }

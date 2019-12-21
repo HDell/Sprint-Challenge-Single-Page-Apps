@@ -7,17 +7,23 @@ export default function CharacterList(props) {
   return (
     <div className="character-list">
       <ul>
-        {(props.searchResults) ? props.searchResults.map(character => (
-          <CharacterCard key={character.id} name={character.name} species={character.species} status={character.status}   />
-        )) : null}
+        {( !(typeof props.searchResults === "undefined") && (props.searchResults.length > 0) ) ?
+          props.searchResults.map(character => {
+            console.log("reached 1st!");
+              return(
+                <CharacterCard key={character.id} name={character.name} species={character.species} status={character.status}   />
+              )
+          })
+          :
+          props.characters.map((character) => {
+            console.log("reached 2nd!");
+              return (
+                <CharacterCard key={character.id} name={character.name} species={character.species} status={character.status}   />
+              )
+          })
+        }
       </ul>
-        <h2>
-            {characters.map((character) => {
-                return (
-                    <CharacterCard key={character.id} name={character.name} species={character.species} status={character.status}   />
-                )
-            })}
-        </h2>
+
     </div>
   );
 }
